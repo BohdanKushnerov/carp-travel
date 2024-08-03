@@ -3,11 +3,20 @@
 @tailwind utilities;
 
 :root {
+  --font-family: 'Inter', sans-serif;
+  --second-family: 'Karantina', sans-serif;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-family);
+  font-weight: 200;
+  background-color: '#AAA';
 }
 
 @layer utilities {
+  .grid-custom-rows {
+    /* grid-template-rows: auto auto minmax(0, 1fr) minmax(0, 1fr); */
+    /* grid-template-rows: auto auto auto minmax(0, 1fr); */
+    grid-template-rows: repeat(3, minmax(min-content, auto));
+  }
 }
