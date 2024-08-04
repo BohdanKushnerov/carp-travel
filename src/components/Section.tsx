@@ -9,7 +9,7 @@ interface ISection {
 const Section: FC<ISection> = ({ className, children, ...rest }) => {
   return (
     <section
-      className={clsx('w-full px-[20px] md:px-[32px]', className)}
+      className={clsx('w-full px-[20px] md:px-[32px] xl:px-[80px]', className)}
       {...rest}
     >
       {children}

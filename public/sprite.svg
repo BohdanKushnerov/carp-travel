@@ -1,0 +1,34 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-mobile-left-btn" viewBox="0 0 25 32">
+<path d="M0 0h0.577v6.641h-0.577z"></path>
+<path d="M0 0h25.358v0.604h-25.358zM0 32h0.577v-6.642h-0.577z"></path>
+<path d="M0 32h25.358v-0.604h-25.358z"></path>
+</symbol>
+<symbol id="icon-mobile-right-btn" viewBox="0 0 25 32">
+<path d="M25.358 0h-0.577v6.641h0.577z"></path>
+<path d="M25.358 0h-25.358v0.604h25.358zM25.358 32h-0.577v-6.642h0.577z"></path>
+<path d="M25.358 32h-25.358v-0.604h25.358z"></path>
+</symbol>
+<symbol id="icon-tablet-left-btn" viewBox="0 0 22 32">
+<path d="M0 0h0.509v7.040h-0.509z"></path>
+<path d="M0 0h22.4v0.64h-22.4zM0 32h0.509v-7.040h-0.509z"></path>
+<path d="M0 32h22.4v-0.64h-22.4z"></path>
+</symbol>
+<symbol id="icon-tablet-right-btn" viewBox="0 0 22 32">
+<path d="M22.4 0h-0.509v7.040h0.509z"></path>
+<path d="M22.4 0h-22.4v0.64h22.4zM22.4 32h-0.509v-7.040h0.509z"></path>
+<path d="M22.4 32h-22.4v-0.64h22.4z"></path>
+</symbol>
+<symbol id="icon-desktop-left-btn" viewBox="0 0 20 32">
+<path d="M0 0h0.451v4.958h-0.451z"></path>
+<path d="M0 0h19.831v0.451h-19.831zM0 32h0.451v-4.958h-0.451z"></path>
+<path d="M0 32h19.831v-0.451h-19.831z"></path>
+</symbol>
+<symbol id="icon-desktop-right-btn" viewBox="0 0 20 32">
+<path d="M19.831 0h-0.451v4.958h0.451z"></path>
+<path d="M19.831 0h-19.831v0.451h19.831zM19.831 32h-0.451v-4.958h0.451z"></path>
+<path d="M19.831 32h-19.831v-0.451h19.831z"></path>
+</symbol>
+</defs>
+</svg>

@@ -10,7 +10,8 @@
 body {
   font-family: var(--font-family);
   font-weight: 200;
-  background-color: '#AAA';
+  background-color: #aaaaaa;
+  color: #ffffff;
 }
 
 @layer utilities {
@@ -18,5 +19,9 @@ body {
     /* grid-template-rows: auto auto minmax(0, 1fr) minmax(0, 1fr); */
     /* grid-template-rows: auto auto auto minmax(0, 1fr); */
     grid-template-rows: repeat(3, minmax(min-content, auto));
+  }
+
+  .add-custom-transition {
+    @apply transition-colors duration-300 ease-in-out;
   }
 }
