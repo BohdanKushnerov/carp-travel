@@ -32,6 +32,9 @@ const config: Config = {
         'hero-mobile': "url('/bcg-hero.webp')",
         'hero-mobile2x': "url('/bcg-hero2x.webp')",
       },
+      backgroundColor: {
+        mobileMenu: 'rgba(1, 10, 5, 0.75);',
+      },
     },
   },
   plugins: [],

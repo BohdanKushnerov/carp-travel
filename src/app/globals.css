@@ -21,7 +21,11 @@ body {
     grid-template-rows: repeat(3, minmax(min-content, auto));
   }
 
-  .add-custom-transition {
+  .custom-transition-colors {
     @apply transition-colors duration-300 ease-in-out;
+  }
+
+  .custom-text-shadow {
+    text-shadow: #fc0 1px 0 10px;
   }
 }
