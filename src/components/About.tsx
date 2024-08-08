@@ -1,10 +1,11 @@
 import React from 'react';
 import Section from './Section';
+import Container from './Container';
 
 const About = () => {
   return (
-    <Section className="py-[56px]">
-      <div className="md:grid-custom-three-rows xl:grid-custom-two-rows md:grid-cols-auto mx-auto w-full max-w-[440px] md:grid md:max-w-[704px] md:grid-cols-2 md:grid-rows-3 xl:max-w-[1120px] xl:grid-rows-2">
+    <Section className="bg-about-mob md:bg-about-tab xl:bg-about-desk bg-cover bg-center bg-no-repeat py-[56px]">
+      <Container className="md:grid-custom-three-rows xl:grid-custom-two-rows md:grid-cols-auto md:grid md:grid-cols-2 md:grid-rows-3 xl:grid-rows-2">
         {/*  */}
         <h2 className="order-1 mb-[8px] text-[40px] font-thin uppercase leading-[140%] tracking-[-0.04em] md:mb-0 md:w-[412px] md:text-[67px] md:leading-[100%] xl:w-[606px] xl:text-[98px]">
           WHO <b className="font-medium">WE ARE</b>
@@ -27,25 +28,7 @@ const About = () => {
             creating unforgettable memories.
           </p>
         </div>
-        {/*font-weight: 400;
-font-size: 18px;
-line-height: 133%;
-text-transform: uppercase;
-color: #fff;
-
-font-weight: 400;
-font-size: 18px;
-line-height: 133%;
-text-transform: uppercase;
-text-align: right;
-color: #fff;
-
-font-family: var(--font-family);
-font-weight: 200;
-font-size: 18px;
-line-height: 133%;
-letter-spacing: 0.12em;
-color: #fff;*/}
+        {/* */}
         <h3 className="order-3 mb-[40px] ml-auto w-[180px] text-[14px] leading-[143%] md:mb-[64px] md:ml-0 md:mt-auto md:w-[221px] md:text-[16px] md:leading-[125%] xl:order-4 xl:mb-0 xl:ml-auto xl:w-[297px] xl:text-[18px] xl:leading-[133%]">
           <b className="font-normal">
             <span className="block uppercase">From vacationers</span>
@@ -64,7 +47,7 @@ color: #fff;*/}
           the Carpathian landscapes lead you safely through the mysteries of
           these mountains.
         </p>
-      </div>
+      </Container>
     </Section>
   );
 };

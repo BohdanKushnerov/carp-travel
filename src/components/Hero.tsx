@@ -1,24 +1,26 @@
 import React, { FC } from 'react';
 import Section from './Section';
 import JoinNowBtn from './JoinNowBtn';
+import Container from './Container';
 
 const Hero: FC = () => {
   return (
-    <Section className="bg-hero-mobile bg-cover bg-center bg-no-repeat pb-[56px] pt-[105px] md:pt-[121px] xl:pt-[130px]">
-      <div className="md:grid-custom-three-rows mx-auto w-full max-w-[440px] md:grid md:max-w-[704px] md:grid-cols-2 md:grid-rows-3 md:items-baseline xl:max-w-[1120px]">
+    <Section className="bg-hero-mob md:bg-hero-tab xl:bg-hero-desk bg-cover bg-center bg-no-repeat pb-[56px] pt-[105px] md:pt-[121px] xl:pt-[130px]">
+      {/*  */}
+      <Container className="md:grid-custom-three-rows md:grid md:grid-cols-2 md:grid-rows-3">
         {/*  */}
         <div className="mb-[24px] ml-auto flex w-[118px] flex-col md:order-2 md:mb-[56px] md:w-[230px] xl:mb-[181px] xl:w-[305px]">
           <h2 className="text-[37px] font-thin leading-[37px] tracking-[0.04em] md:text-[67px] md:leading-[55px] md:tracking-[0.08em] xl:text-[98px] xl:leading-[98px] xl:tracking-[0em]">
-            <span className="font-medium">7</span>
+            <b className="font-medium">7</b>
             DAYS
           </h2>
-          <p className="text-right text-[12px] font-light tracking-[0.79em] md:text-[14px] md:tracking-[1.85em] xl:text-[16px] xl:tracking-[2.28em]">
+          <h3 className="text-right text-[12px] font-light tracking-[0.79em] md:text-[14px] md:tracking-[1.85em] xl:text-[16px] xl:tracking-[2.28em]">
             JOURNEY
-          </p>
+          </h3>
         </div>
         {/*  */}
-        <h1 className="mb-[24px] w-auto text-[40px] font-medium uppercase leading-[116%] tracking-[-0.04em] md:order-1 md:col-span-1 md:row-span-2 md:mb-[68px] md:text-[67px] xl:mb-[148px] xl:text-[98px]">
-          <span className="block">Uncover</span>
+        <h1 className="mb-[24px] w-auto text-[40px] uppercase leading-[140%] tracking-[-0.04em] md:order-1 md:col-span-1 md:row-span-2 md:mb-[68px] md:text-[67px] md:leading-[100%] xl:mb-[148px] xl:text-[98px]">
+          <b className="block font-medium">Uncover</b>
           <span className="block font-thin">Carpathian’s</span>
           <span className="block font-thin">Secrets</span>
         </h1>
@@ -36,7 +38,7 @@ const Hero: FC = () => {
           {/*  */}
           <JoinNowBtn />
         </div>
-      </div>
+      </Container>
     </Section>
   );
 };
