@@ -30,5 +30,8 @@
 <path d="M19.831 0h-19.831v0.451h19.831zM19.831 32h-0.451v-4.958h0.451z"></path>
 <path d="M19.831 32h-19.831v-0.451h19.831z"></path>
 </symbol>
+<symbol id="icon-rectangle" viewBox="0 0 32 32">
+<path d="M15.083 0l15.086 15.086-15.086 15.083-15.083-15.083z"></path>
+</symbol>
 </defs>
 </svg>

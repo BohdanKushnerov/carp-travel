@@ -28,6 +28,9 @@ const config: Config = {
         '768px': '768px',
         '1280px': '1280px',
       },
+      colors: {
+        slider: 'rgba(255, 255, 255, 0.2)',
+      },
       backgroundImage: {
         'hero-mob': "url('/bcg-images/hero/bcg-hero-mob.webp')",
         'hero-tab': "url('/bcg-images/hero/bcg-hero-tab.webp')",

@@ -1,3 +1,5 @@
+'use client';
+
 import { createPortal } from 'react-dom';
 import React, { FC, MouseEvent, ReactNode, useEffect, useState } from 'react';
 import { useCloseModal } from '@/hooks/useCloseModal';
@@ -22,7 +24,7 @@ const Modal: FC<IModal> = ({ handleToggleModal, children }) => {
   return mounted
     ? createPortal(
         <div
-          className="bg-mobileMenu absolute left-0 top-0 z-20 flex h-screen w-screen flex-col gap-[110px] px-[20px] py-[43px] backdrop-blur-[50px] md:hidden"
+          className="absolute left-0 top-0 z-20 flex h-screen w-screen flex-col gap-[110px] bg-mobileMenu px-[20px] py-[43px] backdrop-blur-[50px] md:hidden"
           onClick={handleBackdropClick}
         >
           <button
