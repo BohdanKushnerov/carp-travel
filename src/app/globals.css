@@ -16,18 +16,31 @@ body {
 
 @layer utilities {
   .grid-cols-auto {
-    grid-template-columns: minmax(min-content, max-content) minmax(min-content, auto);
+    grid-template-columns: minmax(min-content, max-content) minmax(
+        min-content,
+        auto
+      );
+    /* grid-template-columns:
+      minmax(min-content, max-content) minmax(min-content, auto)
+      minmax(min-content, auto); */
+  }
+
+  .grid-three-cols-auto {
+    grid-template-columns:
+      minmax(min-content, max-content) minmax(min-content, auto)
+      minmax(min-content, auto);
   }
 
   .grid-custom-two-rows {
-    /* grid-template-rows: auto auto minmax(0, 1fr) minmax(0, 1fr); */
-    /* grid-template-rows: auto auto auto minmax(0, 1fr); */
     grid-template-rows: repeat(2, minmax(min-content, auto));
   }
+
   .grid-custom-three-rows {
-    /* grid-template-rows: auto auto minmax(0, 1fr) minmax(0, 1fr); */
-    /* grid-template-rows: auto auto auto minmax(0, 1fr); */
     grid-template-rows: repeat(3, minmax(min-content, auto));
+  }
+
+  .grid-custom-four-rows {
+    grid-template-rows: repeat(4, minmax(min-content, auto));
   }
 
   .custom-transition-colors {
