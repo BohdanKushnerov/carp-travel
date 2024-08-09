@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 
-type AppScreen = 'mobile' | 'tablet' | 'desktop';
+export type AppScreen = 'mobile' | 'tablet' | 'desktop';
 
 const useResizeWindow = (
   tabletWidth: number,

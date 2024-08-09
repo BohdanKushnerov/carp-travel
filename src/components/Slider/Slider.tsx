@@ -1,18 +1,23 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import SvgIcon from '../SvgIcon';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
-import useResizeWindow from '@/hooks/useResizeWindow';
 import { EffectFade } from 'swiper/modules';
 import 'swiper/css';
+import { AppScreen } from '@/hooks/useResizeWindow';
+import useSliderImageSize from '@/hooks/useSliderImageSize';
 
 const slides = [
   {
     subtitle: 'Feel the adrenaline rush',
     slide: 1,
-    image: '/slider/slide-1.webp',
+    image: {
+      mobile: '/slider/mobile/slide-1.webp',
+      tablet: '/slider/tablet/slide-1.webp',
+      desktop: '/slider/desktop/slide-1.webp',
+    },
     activity: 'ATVs Traveling',
     description:
       'Join exciting rafting expeditions on the waterways of the Carpathians. Go through challenging waterways and overcome gusty waves, feel the adrenaline, and enjoy the incredible views of the surrounding mountains.',
@@ -20,7 +25,11 @@ const slides = [
   {
     subtitle: 'Destroy your limitations',
     slide: 2,
-    image: '/slider/slide-2.webp',
+    image: {
+      mobile: '/slider/mobile/slide-2.webp',
+      tablet: '/slider/tablet/slide-2.webp',
+      desktop: '/slider/desktop/slide-2.webp',
+    },
     activity: 'Skydiving',
     description:
       "Fly in the sky over the Carpathians! Experienced instructors will help you realize your dream of free flight. Remember the incredible emotions and panoramas from a bird's eye view forever.",
@@ -28,7 +37,11 @@ const slides = [
   {
     subtitle: 'Get Inspired',
     slide: 3,
-    image: '/slider/slide-3.webp',
+    image: {
+      mobile: '/slider/mobile/slide-3.webp',
+      tablet: '/slider/tablet/slide-3.webp',
+      desktop: '/slider/desktop/slide-3.webp',
+    },
     activity: 'Hot Air Ballooning',
     description:
       'Feel Zen over the mountain peaks! Hot air ballooning gives you incredible impressions and panoramas of the Carpathians that seem endless.',
@@ -36,7 +49,11 @@ const slides = [
   {
     subtitle: 'Overcome your fears',
     slide: 4,
-    image: '/slider/slide-4.webp',
+    image: {
+      mobile: '/slider/mobile/slide-4.webp',
+      tablet: '/slider/tablet/slide-4.webp',
+      desktop: '/slider/desktop/slide-4.webp',
+    },
     activity: 'Rock Climbing',
     description:
       'Overcome the peaks of the Carpathians in a unique way - climbing. Make your own way to the heights and find inner peace in the embrace of the mighty rocks.',
@@ -44,67 +61,64 @@ const slides = [
   {
     subtitle: 'Trust the flow',
     slide: 5,
-    image: '/slider/slide-5.webp',
+    image: {
+      mobile: '/slider/mobile/slide-5.webp',
+      tablet: '/slider/tablet/slide-5.webp',
+      desktop: '/slider/desktop/slide-5.webp',
+    },
     activity: 'Rafting',
     description:
       'Join exciting rafting expeditions on the waterways of the Carpathians. Go through challenging waterways and overcome gusty waves, feel the adrenaline, and enjoy the incredible views of the surrounding mountains.',
   },
 ];
 
-//mobile width={280} height={213}
-//tablet width={463} height={370}
-//desktop width={607} height={429}
+interface ISliderProps {
+  currentSlide: number;
+  handleChangeCurrentSlide: (num: number) => void;
+  screen: AppScreen;
+}
 
-const Slider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [imgSize, setImgSize] = useState({ width: 607, height: 429 }); // Default to desktop size
+const Slider: FC<ISliderProps> = ({
+  currentSlide,
+  handleChangeCurrentSlide,
+  screen,
+}) => {
   const swiperRef = useRef<SwiperRef>(null);
 
-  const screen = useResizeWindow(768, 1280);
-  const { width: imgWidth, height: imgHeight } = imgSize;
-  console.log('imgSize', imgSize);
+  const { width: imgWidth, height: imgHeight } = useSliderImageSize(screen);
 
-  useEffect(() => {
-    setImgSize(getImageSize());
-  }, [screen]);
+  const handleSlideChange = (index: number) => {
+    if (swiperRef.current) {
+      swiperRef.current.swiper.slideTo(index);
+      handleChangeCurrentSlide(index);
+    }
+  };
 
-  const getImageSize = () => {
-    switch (screen) {
-      case 'mobile':
+  return (
+    <>
+      {/* 
+            case 'mobile':
         return { width: 280, height: 213 };
       case 'tablet':
         return { width: 463, height: 370 };
       case 'desktop':
       default:
         return { width: 607, height: 429 };
-    }
-  };
-
-  const handleSlideChange = (index: number) => {
-    if (swiperRef.current) {
-      swiperRef.current.swiper.slideTo(index);
-      setCurrentSlide(index);
-    }
-  };
-
-  return (
-    <>
-      {/*  */}
-      <p className="mb-[16px] text-right text-[43px] font-thin">
-        <span>0{currentSlide + 1}/</span>
-        <span className="text-slider">05</span>
-      </p>
-
-      {/*  */}
-      <div className="mx-auto mb-[12px] md:h-[370px] md:w-[463px]">
+      */}
+      <div className="mx-auto mb-[12px] md:h-[370px] md:w-[463px] xl:w-[607px]">
         <Swiper
-          className="w-[280px] md:h-[370px] md:w-[463px]"
+          // className="w-[280px] md:h-[370px] md:w-[463px] xl:w-[607px]"
+          className="w-auto"
           ref={swiperRef}
           modules={[EffectFade]}
           spaceBetween={0}
           slidesPerView={1}
-          onSlideChange={slide => setCurrentSlide(slide.realIndex)}
+          onSlideChange={slide => handleChangeCurrentSlide(slide.realIndex)}
           loop={true}
+          fadeEffect={{ crossFade: true }}
+          effect="fade"
+          speed={1000}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
         >
           {slides.map(slide => (
             <SwiperSlide key={slide.slide}>
@@ -112,7 +126,7 @@ const Slider = () => {
                 // className="h-auto w-auto"
                 width={imgWidth}
                 height={imgHeight}
-                src={slide.image}
+                src={slide.image[screen]}
                 alt={slide.subtitle}
               />
             </SwiperSlide>
