@@ -33,5 +33,13 @@
 <symbol id="icon-rectangle" viewBox="0 0 32 32">
 <path d="M15.083 0l15.086 15.086-15.086 15.083-15.083-15.083z"></path>
 </symbol>
+<symbol id="icon-checkbox" viewBox="0 0 32 32">
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.3333" d="M0.667 0.667h30.667v30.667h-30.667z"></path>
+<path fill="#fff" style="fill: var(--color1, #fff)" opacity="0.1" d="M5.333 5.333h21.333v21.333h-21.333z"></path>
+</symbol>
+<symbol id="icon-checkbox-checked" viewBox="0 0 32 32">
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.3333" d="M0.667 0.667h30.667v30.667h-30.667z"></path>
+<path fill="#fff" style="fill: var(--color1, #fff)" d="M5.333 5.333h21.333v21.333h-21.333z"></path>
+</symbol>
 </defs>
 </svg>
