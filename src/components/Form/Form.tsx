@@ -145,19 +145,19 @@ const Form = () => {
   return (
     <>
       {/*  */}
-      <p className="mb-[24px] ml-auto w-[179px] text-[14px] leading-[143%] md:mb-[32px] md:ml-0 md:text-[13px] md:leading-[154%] xl:text-[18px] xl:leading-[133%]">
+      <p className="mb-[24px] ml-auto w-[179px] text-[14px] leading-[143%] md:mb-[32px] md:ml-0 md:text-[13px] md:leading-[154%] xl:mb-[14px] xl:w-[234px] xl:text-[18px] xl:leading-[133%]">
         Don't miss your opportunity! Fill out the form right now and join our
         team!
       </p>
       {/*  */}
       <form
-        className="md:grid-custom-two-rows md:grid-cols-auto flex flex-col md:grid md:h-[316px] md:w-[463px] md:grid-cols-2 md:grid-rows-2"
+        className="md:grid-custom-two-rows md:grid-cols-auto flex flex-col md:grid md:h-[316px] md:w-[463px] md:grid-cols-2 md:grid-rows-2 xl:h-[380px] xl:w-[606px]"
         action="/path"
         onSubmit={handleSubmit(onSubmit)}
         onChange={handleChange}
       >
         {/*  */}
-        <div className="md:mr-[20px] md:w-[222px]">
+        <div className="md:mr-[20px] md:w-[222px] xl:mr-[24px] xl:w-[290px]">
           {formFields.map(field => (
             <label
               key={field.name}
@@ -170,7 +170,7 @@ const Form = () => {
               </span>
               {/*  */}
               <input
-                className="h-[24px] w-full border-white bg-input px-[8px] text-[13px] leading-[185%] text-opacity-20 outline-none focus:border"
+                className="h-[24px] w-full border-white bg-input px-[8px] text-[13px] leading-[185%] text-opacity-20 outline-none focus:border xl:text-[20px] xl:leading-[120%]"
                 {...register(field.name, {
                   pattern: field.pattern,
                   required: field.requiredMessage,
@@ -179,9 +179,10 @@ const Form = () => {
                 id={field.name}
                 placeholder={field.placeholder}
               />
+              {/* */}
               <div className="h-[16px] xl:h-[24px]">
                 {errors?.[field.name] && (
-                  <p className="text-incorrectField text-right text-[12px] leading-[200%] tracking-[0.2em]">
+                  <p className="text-right text-[12px] leading-[200%] tracking-[0.2em] text-incorrectField">
                     {errors?.[field.name]?.message}
                   </p>
                 )}
@@ -190,7 +191,10 @@ const Form = () => {
           ))}
         </div>
 
-        <label htmlFor="message" className="mb-[16px] md:mb-0 md:w-[222px]">
+        <label
+          htmlFor="message"
+          className="mb-[16px] md:mb-0 md:w-[222px] xl:w-[292px]"
+        >
           <span className="mb-1 block text-[12px] leading-[200%] tracking-[0.2em]">
             Message
           </span>
@@ -207,7 +211,7 @@ const Form = () => {
 
         <label
           htmlFor="checkbox"
-          className="relative mb-[16px] flex w-full cursor-pointer items-start gap-2 md:mb-0 md:w-[222px]"
+          className="relative mb-[16px] flex w-full cursor-pointer items-start gap-2 md:mb-0 md:w-[222px] xl:w-[290px]"
         >
           <input
             type="checkbox"
@@ -233,14 +237,15 @@ const Form = () => {
             />
           </div>
 
-          <span className="text-[12px] leading-[183%]">
+          {/*  */}
+          <span className="text-[12px] leading-[183%] xl:leading-[200%]">
             I confirm my consent to the processing of personal data.
           </span>
         </label>
 
-        {/* */}
+        {/*  */}
         <button
-          className="ml-auto w-[82px] text-[30px] font-medium hover:text-gold focus:text-gold"
+          className="ml-auto w-[82px] text-[30px] font-medium hover:text-gold focus:text-gold xl:w-auto xl:text-[32px]"
           type="submit"
         >
           SEND
