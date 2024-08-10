@@ -3,15 +3,17 @@
 import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import SvgIcon from '../SvgIcon';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const textRegExp =
   /^[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+([-']?[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+)\s[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+([-']?[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+)$/;
 
-const phoneRegExp = /^380\d{9}$/;
+const phoneRegExp = /^\+380\d{9}$/;
 
 const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
-type FieldName = 'fullName' | 'email' | 'position' | 'phone';
+type FieldName = 'fullName' | 'email' | 'position' | 'phone' | 'message';
 
 const formFields: {
   name: FieldName;
@@ -69,13 +71,29 @@ const formFields: {
   },
 ];
 
-interface IContactForm {
-  fullName: string;
-  email: string;
-  position: string;
-  phone: string;
-  message: string;
-}
+const formSchema = z.object({
+  fullName: z
+    .string()
+    .min(1, { message: 'Name is required' })
+    .regex(textRegExp, { message: 'Incorrect name' }),
+
+  email: z
+    .string()
+    .min(1, { message: 'Email is required' })
+    .regex(emailRegExp, { message: 'Invalid email' }),
+
+  position: z.string().optional(),
+  // .regex(textRegExp, { message: 'Invalid position' }),
+
+  phone: z
+    .string()
+    .min(1, { message: 'Phone is required' })
+    .regex(phoneRegExp, { message: 'Incorrect Phone' }),
+
+  message: z.string().optional(),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const Form = () => {
   const {
@@ -85,8 +103,9 @@ const Form = () => {
     getValues,
     reset,
     formState: { isSubmitSuccessful, errors },
-  } = useForm<IContactForm>({
+  } = useForm<FormValues>({
     mode: 'onChange',
+    resolver: zodResolver(formSchema),
     defaultValues: {
       fullName: '',
       email: '',
@@ -108,7 +127,7 @@ const Form = () => {
       localStorage.getItem('contactFormValues') || '{}'
     );
     Object.keys(storedValues).forEach(key => {
-      setValue(key as keyof IContactForm, storedValues[key]);
+      setValue(key as keyof FormValues, storedValues[key]);
     });
   }, [setValue]);
 
@@ -116,87 +135,118 @@ const Form = () => {
     localStorage.setItem('contactFormValues', JSON.stringify(getValues()));
   };
 
-  const onSubmit: SubmitHandler<IContactForm> = data => {
+  const onSubmit: SubmitHandler<FormValues> = data => {
     console.log('data sended', data);
   };
 
+  // console.log('errors', errors);
+  // console.log('getValues', getValues());
+
   return (
-    <form
-      className="flex flex-col gap-4"
-      action="/path"
-      onSubmit={handleSubmit(onSubmit)}
-      onChange={handleChange}
-    >
+    <>
       {/*  */}
-      {formFields.map(field => (
-        <label key={field.name} htmlFor={field.name}>
-          <span className="mb-1 block text-[12px] leading-[200%] tracking-[0.2em]">
-            {field.label}
-          </span>
-          {/*  */}
-          <input
-            className="h-[24px] w-full border-white bg-input px-[8px] py-[6px] text-[20px] leading-[120%] outline-none focus:border"
-            {...register(field.name, {
-              pattern: field.pattern,
-              required: field.requiredMessage,
-            })}
-            type={field.type}
-            id={field.name}
-            placeholder={field.placeholder}
-          />
-          {/* <p>{errors}</p> */}
-        </label>
-      ))}
-      <label htmlFor="message">
-        <span className="mb-1 block text-[12px] leading-[200%] tracking-[0.2em]">
-          Message
-        </span>
-        <textarea
-          className="h-[196px] w-full bg-input px-[8px] py-[6px]"
-          {...register('message')}
-          id="message"
-          name="message"
-          cols={30}
-          rows={10}
-          // placeholder="Your message"
-        />
-      </label>
-
-      <label htmlFor="checkbox" className="flex cursor-pointer items-center gap-2">
-        <input
-          type="checkbox"
-          name="confirm"
-          id="checkbox"
-          className="peer hidden"
-        />
-
-        <SvgIcon
-          height={24}
-          width={24}
-          iconPath="/sprite.svg#icon-checkbox"
-          className="peer-checked:hidden"
-        />
-
-        <SvgIcon
-          height={24}
-          width={24}
-          iconPath="/sprite.svg#icon-checkbox-checked"
-          className="hidden peer-checked:block"
-        />
-
-        <span className="ml-2 text-[12px] leading-[183%]">
-          I confirm my consent to the processing of personal data.
-        </span>
-      </label>
-
-      {/* */}
-      <button
-        className="ml-auto w-[82px] text-[30px] font-medium"
-        type="submit"
+      <p className="mb-[24px] ml-auto w-[179px] text-[14px] leading-[143%] md:mb-[32px] md:ml-0 md:text-[13px] md:leading-[154%] xl:text-[18px] xl:leading-[133%]">
+        Don't miss your opportunity! Fill out the form right now and join our
+        team!
+      </p>
+      {/*  */}
+      <form
+        className="md:grid-custom-two-rows md:grid-cols-auto flex flex-col md:grid md:h-[316px] md:w-[463px] md:grid-cols-2 md:grid-rows-2"
+        action="/path"
+        onSubmit={handleSubmit(onSubmit)}
+        onChange={handleChange}
       >
-        SEND
-      </button>
-    </form>
+        {/*  */}
+        <div className="md:mr-[20px] md:w-[222px]">
+          {formFields.map(field => (
+            <label
+              key={field.name}
+              htmlFor={field.name}
+              className="md:h-[68px]"
+            >
+              {/*  */}
+              <span className="mb-[4px] block text-[12px] leading-[200%] tracking-[0.2em]">
+                {field.label}
+              </span>
+              {/*  */}
+              <input
+                className="h-[24px] w-full border-white bg-input px-[8px] text-[13px] leading-[185%] text-opacity-20 outline-none focus:border"
+                {...register(field.name, {
+                  pattern: field.pattern,
+                  required: field.requiredMessage,
+                })}
+                type={field.type}
+                id={field.name}
+                placeholder={field.placeholder}
+              />
+              <div className="h-[16px] xl:h-[24px]">
+                {errors?.[field.name] && (
+                  <p className="text-incorrectField text-right text-[12px] leading-[200%] tracking-[0.2em]">
+                    {errors?.[field.name]?.message}
+                  </p>
+                )}
+              </div>
+            </label>
+          ))}
+        </div>
+
+        <label htmlFor="message" className="mb-[16px] md:mb-0 md:w-[222px]">
+          <span className="mb-1 block text-[12px] leading-[200%] tracking-[0.2em]">
+            Message
+          </span>
+          <textarea
+            className="h-[196px] w-full bg-input px-[8px] py-[6px] outline-none focus:border"
+            {...register('message')}
+            id="message"
+            name="message"
+            cols={30}
+            rows={10}
+            // placeholder="Your message"
+          />
+        </label>
+
+        <label
+          htmlFor="checkbox"
+          className="relative mb-[16px] flex w-full cursor-pointer items-start gap-2 md:mb-0 md:w-[222px]"
+        >
+          <input
+            type="checkbox"
+            name="checkbox"
+            id="checkbox"
+            className="peer hidden"
+          />
+
+          <div className="peer-checked:hidden">
+            <SvgIcon
+              height={24}
+              width={24}
+              iconPath="/sprite.svg#icon-checkbox"
+              // className="h-6 w-6"
+            />
+          </div>
+
+          <div className="hidden h-6 w-6 peer-checked:block">
+            <SvgIcon
+              height={24}
+              width={24}
+              iconPath="/sprite.svg#icon-checkbox-checked"
+            />
+          </div>
+
+          <span className="text-[12px] leading-[183%]">
+            I confirm my consent to the processing of personal data.
+          </span>
+        </label>
+
+        {/* */}
+        <button
+          className="ml-auto w-[82px] text-[30px] font-medium hover:text-gold focus:text-gold"
+          type="submit"
+        >
+          SEND
+        </button>
+      </form>
+    </>
   );
 };
 

@@ -3,15 +3,20 @@
 import Section from './Section';
 import Container from './Container';
 import Slider from './Slider/Slider';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import useResizeWindow from '@/hooks/useResizeWindow';
 import { slides } from '@/constants/slides';
 
 const Services = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   const screen = useResizeWindow(768, 1280);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleChangeCurrentSlide = useCallback((num: number) => {
     setCurrentSlide(num);
@@ -22,21 +27,36 @@ const Services = () => {
       className={clsx(
         'bg-cover bg-center bg-no-repeat py-[56px] transition-all duration-500 ease-in-out',
         {
-          'bg-services-mob-1': screen === 'mobile' && currentSlide === 0,
-          'bg-services-mob-2': screen === 'mobile' && currentSlide === 1,
-          'bg-services-mob-3': screen === 'mobile' && currentSlide === 2,
-          'bg-services-mob-4': screen === 'mobile' && currentSlide === 3,
-          'bg-services-mob-5': screen === 'mobile' && currentSlide === 4,
-          'bg-services-tab-1': screen === 'tablet' && currentSlide === 0,
-          'bg-services-tab-2': screen === 'tablet' && currentSlide === 1,
-          'bg-services-tab-3': screen === 'tablet' && currentSlide === 2,
-          'bg-services-tab-4': screen === 'tablet' && currentSlide === 3,
-          'bg-services-tab-5': screen === 'tablet' && currentSlide === 4,
-          'bg-services-desk-1': screen === 'desktop' && currentSlide === 0,
-          'bg-services-desk-2': screen === 'desktop' && currentSlide === 1,
-          'bg-services-desk-3': screen === 'desktop' && currentSlide === 2,
-          'bg-services-desk-4': screen === 'desktop' && currentSlide === 3,
-          'bg-services-desk-5': screen === 'desktop' && currentSlide === 4,
+          'bg-services-mob-1':
+            isMounted && screen === 'mobile' && currentSlide === 0,
+          'bg-services-mob-2':
+            isMounted && screen === 'mobile' && currentSlide === 1,
+          'bg-services-mob-3':
+            isMounted && screen === 'mobile' && currentSlide === 2,
+          'bg-services-mob-4':
+            isMounted && screen === 'mobile' && currentSlide === 3,
+          'bg-services-mob-5':
+            isMounted && screen === 'mobile' && currentSlide === 4,
+          'bg-services-tab-1':
+            isMounted && screen === 'tablet' && currentSlide === 0,
+          'bg-services-tab-2':
+            isMounted && screen === 'tablet' && currentSlide === 1,
+          'bg-services-tab-3':
+            isMounted && screen === 'tablet' && currentSlide === 2,
+          'bg-services-tab-4':
+            isMounted && screen === 'tablet' && currentSlide === 3,
+          'bg-services-tab-5':
+            isMounted && screen === 'tablet' && currentSlide === 4,
+          'bg-services-desk-1':
+            isMounted && screen === 'desktop' && currentSlide === 0,
+          'bg-services-desk-2':
+            isMounted && screen === 'desktop' && currentSlide === 1,
+          'bg-services-desk-3':
+            isMounted && screen === 'desktop' && currentSlide === 2,
+          'bg-services-desk-4':
+            isMounted && screen === 'desktop' && currentSlide === 3,
+          'bg-services-desk-5':
+            isMounted && screen === 'desktop' && currentSlide === 4,
         }
       )}
     >
@@ -55,23 +75,26 @@ const Services = () => {
           currentSlide={currentSlide}
           handleChangeCurrentSlide={handleChangeCurrentSlide}
           screen={screen}
+          isMounted={isMounted}
         />
 
         {/*  */}
-        <h3
-          className={clsx(
-            'mb-[24px] ml-auto text-right text-[12px] leading-[200%] tracking-[0.2em] md:order-5 md:mb-[34px] xl:mb-0 xl:w-full xl:text-left',
-            {
-              'pt-0': screen === 'desktop' && currentSlide === 0,
-              'pt-[43px]': screen === 'desktop' && currentSlide === 1,
-              'pt-[91px]': screen === 'desktop' && currentSlide === 2,
-              'pt-[163px]': screen === 'desktop' && currentSlide === 3,
-              'pt-[211px]': screen === 'desktop' && currentSlide === 4,
-            }
-          )}
-        >
-          {slides[currentSlide].subtitle}
-        </h3>
+        {isMounted && (
+          <h3
+            className={clsx(
+              'mb-[24px] ml-auto text-right text-[12px] leading-[200%] tracking-[0.2em] md:order-5 md:mb-[34px] xl:mb-0 xl:w-full xl:text-left',
+              {
+                'pt-0': screen === 'desktop' && currentSlide === 0,
+                'pt-[43px]': screen === 'desktop' && currentSlide === 1,
+                'pt-[91px]': screen === 'desktop' && currentSlide === 2,
+                'pt-[163px]': screen === 'desktop' && currentSlide === 3,
+                'pt-[211px]': screen === 'desktop' && currentSlide === 4,
+              }
+            )}
+          >
+            {slides[currentSlide].subtitle}
+          </h3>
+        )}
 
         {/* */}
         <p className="text-[14px] leading-[143%] md:order-6 md:mt-auto md:text-[13px] md:leading-[154%] xl:col-start-3 xl:row-start-3 xl:mt-auto xl:w-[293px] xl:text-[18px] xl:leading-[133%]">

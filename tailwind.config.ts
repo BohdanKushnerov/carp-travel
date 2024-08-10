@@ -32,6 +32,7 @@ const config: Config = {
       colors: {
         slider: 'rgba(255, 255, 255, 0.2)',
         gold: '#fc0',
+        incorrectField: '#ff5757',
       },
       backgroundImage: {
         'hero-mob': "url('/bcg-images/hero/bcg-hero-mob.webp')",

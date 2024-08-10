@@ -15,12 +15,14 @@ interface ISliderProps {
   currentSlide: number;
   handleChangeCurrentSlide: (num: number) => void;
   screen: AppScreen;
+  isMounted: boolean;
 }
 
 const Slider: FC<ISliderProps> = ({
   currentSlide,
   handleChangeCurrentSlide,
   screen,
+  isMounted,
 }) => {
   const swiperRef = useRef<SwiperRef>(null);
 
@@ -51,13 +53,14 @@ const Slider: FC<ISliderProps> = ({
         >
           {slides.map(slide => (
             <SwiperSlide key={slide.slide}>
-              <Image
-                // className="h-auto w-auto"
-                width={imgWidth}
-                height={imgHeight}
-                src={slide.image[screen]}
-                alt={slide.subtitle}
-              />
+              {isMounted && (
+                <Image
+                  width={imgWidth}
+                  height={imgHeight}
+                  src={slide.image[screen]}
+                  alt={slide.subtitle}
+                />
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
