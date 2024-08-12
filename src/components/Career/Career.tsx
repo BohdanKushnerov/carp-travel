@@ -1,7 +1,10 @@
-import React from 'react';
-import Section from './Section';
-import Container from './Container';
-import Form from './Form/Form';
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import Section from '../Section';
+import Container from '../Container';
+import Form from '../Form/Form';
+import useResizeWindow, { AppScreen } from '@/hooks/useResizeWindow';
 
 const benefits = [
   {
@@ -26,9 +29,17 @@ const benefits = [
 ];
 
 const Career = () => {
+  const screen = useResizeWindow(768, 1280);
+
+  const [isClient, setClient] = useState(false);
+
+  useEffect(() => {
+    setClient(true);
+  }, []);
+
   return (
-    <Section className="px-0 md:bg-[url('/bcg-images/form-ex.png')] md:bg-cover md:bg-center md:bg-no-repeat">
-      <div className="w-full border-none bg-[url('/bcg-images/form-ex.png')] bg-cover bg-center bg-no-repeat px-[20px] py-[56px] outline-none md:bg-none md:px-0">
+    <Section className="md:bg-career-tab xl:bg-career-desk px-[0px] md:bg-cover md:bg-center md:bg-no-repeat">
+      <div className="bg-career-mob w-full border-none bg-cover bg-center bg-no-repeat px-[20px] py-[56px] outline-none md:bg-none md:px-0">
         <Container className="md:grid-custom-three-rows md:grid-three-cols-auto xl:grid-cols-auto md:grid md:grid-cols-3 md:grid-rows-3 xl:grid-cols-2 xl:grid-rows-[auto_84px_auto]">
           <h2 className="mb-[24px] text-[40px] font-thin uppercase leading-[140%] tracking-[-0.04em] md:order-1 md:col-span-2 md:mb-[12px] md:h-min md:w-[368px] md:text-[67px] md:leading-[100%] xl:col-span-1 xl:mb-[24px] xl:w-[540px] xl:text-[98px]">
             Choose <b className="font-medium">US</b>
@@ -61,17 +72,21 @@ const Career = () => {
             ))}
           </ul>
           {/*  */}
-          <div className="hidden md:order-5 md:col-span-2 md:block xl:order-4 xl:col-span-1 xl:row-span-2">
-            <Form />
-          </div>
+          {isClient && screen !== 'mobile' && (
+            <div className="hidden md:order-5 md:col-span-2 md:block xl:order-4 xl:col-span-1 xl:row-span-2">
+              <Form />
+            </div>
+          )}
         </Container>
       </div>
 
-      <Section className="bg-[url('/bcg-images/form-ex.png')] bg-cover bg-center bg-no-repeat py-[56px] md:hidden md:bg-none">
-        <Container className="">
-          <Form />
-        </Container>
-      </Section>
+      {isClient && screen === 'mobile' && (
+        <Section className="bg-career-mob bg-cover bg-center bg-no-repeat py-[56px] md:hidden md:bg-none">
+          <Container className="">
+            <Form />
+          </Container>
+        </Section>
+      )}
     </Section>
   );
 };

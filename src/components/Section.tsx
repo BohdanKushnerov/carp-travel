@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
+// import clsx from 'clsx';
 
 interface ISection {
   className: string;
@@ -9,9 +10,9 @@ interface ISection {
 const Section: FC<ISection> = ({ className, children, ...rest }) => {
   return (
     <section
-      className={clsx(
-        className,
-        'w-full border-none px-[20px] outline-none md:px-[32px] xl:px-[80px]'
+      className={twMerge(
+        'w-full border-none px-[20px] outline-none md:px-[32px] xl:px-[80px]',
+        className
       )}
       {...rest}
     >

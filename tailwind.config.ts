@@ -56,6 +56,9 @@ const config: Config = {
         'services-desk-3': "url('/bcg-images/services/bcg-serv-desk-3.webp')",
         'services-desk-4': "url('/bcg-images/services/bcg-serv-desk-4.webp')",
         'services-desk-5': "url('/bcg-images/services/bcg-serv-desk-5.webp')",
+        'career-desk': "url('/bcg-images/career/bcg-career-desk.webp')",
+        'career-tab': "url('/bcg-images/career/bcg-career-tab.webp')",
+        'career-mob': "url('/bcg-images/career/bcg-career-mob.webp')",
       },
       backgroundColor: {
         mobileMenu: 'rgba(1, 10, 5, 0.75);',

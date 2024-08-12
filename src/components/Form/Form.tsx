@@ -76,21 +76,19 @@ const formSchema = z.object({
     .string()
     .min(1, { message: 'Name is required' })
     .regex(textRegExp, { message: 'Incorrect name' }),
-
   email: z
     .string()
     .min(1, { message: 'Email is required' })
     .regex(emailRegExp, { message: 'Invalid email' }),
-
   position: z.string().optional(),
-  // .regex(textRegExp, { message: 'Invalid position' }),
-
   phone: z
     .string()
     .min(1, { message: 'Phone is required' })
     .regex(phoneRegExp, { message: 'Incorrect Phone' }),
-
   message: z.string().optional(),
+  checkbox: z.boolean().refine(val => val === true, {
+    message: 'You must accept the terms and conditions',
+  }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -102,6 +100,7 @@ const Form = () => {
     setValue,
     getValues,
     reset,
+    watch,
     formState: { isSubmitSuccessful, errors },
   } = useForm<FormValues>({
     mode: 'onChange',
@@ -112,6 +111,7 @@ const Form = () => {
       position: '',
       phone: '',
       message: '',
+      checkbox: false,
     },
   });
 
@@ -123,12 +123,16 @@ const Form = () => {
   }, [isSubmitSuccessful, reset]);
 
   useEffect(() => {
-    const storedValues = JSON.parse(
-      localStorage.getItem('contactFormValues') || '{}'
-    );
-    Object.keys(storedValues).forEach(key => {
-      setValue(key as keyof FormValues, storedValues[key]);
-    });
+    if (typeof window !== 'undefined') {
+      const storedValues = JSON.parse(
+        localStorage.getItem('contactFormValues') || '{}'
+      );
+
+      Object.keys(storedValues).forEach(key => {
+        if (key === 'checkbox') return;
+        setValue(key as keyof FormValues, storedValues[key]);
+      });
+    }
   }, [setValue]);
 
   const handleChange = () => {
@@ -139,8 +143,7 @@ const Form = () => {
     console.log('data sended', data);
   };
 
-  // console.log('errors', errors);
-  // console.log('getValues', getValues());
+  const isChecked = watch('checkbox');
 
   return (
     <>
@@ -199,48 +202,47 @@ const Form = () => {
             Message
           </span>
           <textarea
-            className="h-[196px] w-full bg-input px-[8px] py-[6px] outline-none focus:border"
+            className="h-[196px] w-full resize-none bg-input px-[8px] py-[6px] outline-none focus:border"
             {...register('message')}
             id="message"
             name="message"
             cols={30}
             rows={10}
-            // placeholder="Your message"
           />
         </label>
 
-        <label
-          htmlFor="checkbox"
-          className="relative mb-[16px] flex w-full cursor-pointer items-start gap-2 md:mb-0 md:w-[222px] xl:w-[290px]"
-        >
-          <input
-            type="checkbox"
-            name="checkbox"
-            id="checkbox"
-            className="peer hidden"
-          />
-
-          <div className="peer-checked:hidden">
-            <SvgIcon
-              height={24}
-              width={24}
-              iconPath="/sprite.svg#icon-checkbox"
-              // className="h-6 w-6"
+        <label htmlFor="checkbox" className="flex flex-col">
+          <div className="flex items-center gap-[8px]">
+            <input
+              {...register('checkbox')}
+              type="checkbox"
+              id="checkbox"
+              className="hidden"
             />
+            {isChecked ? (
+              <SvgIcon
+                height={24}
+                width={24}
+                iconPath="/sprite.svg#icon-checkbox-checked"
+              />
+            ) : (
+              <SvgIcon
+                height={24}
+                width={24}
+                iconPath="/sprite.svg#icon-checkbox"
+              />
+            )}
+            <span className="text-[12px] leading-[183%] xl:leading-[200%]">
+              I confirm my consent to the processing of personal data.
+            </span>
           </div>
-
-          <div className="hidden h-6 w-6 peer-checked:block">
-            <SvgIcon
-              height={24}
-              width={24}
-              iconPath="/sprite.svg#icon-checkbox-checked"
-            />
+          <div className="h-[16px] xl:h-[24px]">
+            {errors?.checkbox && (
+              <p className="text-right text-[12px] leading-[200%] tracking-[0.2em] text-incorrectField">
+                {errors?.checkbox?.message}
+              </p>
+            )}
           </div>
-
-          {/*  */}
-          <span className="text-[12px] leading-[183%] xl:leading-[200%]">
-            I confirm my consent to the processing of personal data.
-          </span>
         </label>
 
         {/*  */}
