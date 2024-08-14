@@ -51,3 +51,30 @@ body {
     text-shadow: #fc0 1px 0 10px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .swiper.custom-swiper .swiper-slide.custom-swiper-slide,
+  .swiper.custom-swiper .swiper-slide.custom-swiper-slide.swiper-slide-next,
+  .swiper.custom-swiper .swiper-slide.custom-swiper-slide.swiper-slide-prev {
+    height: 187px !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .swiper.custom-swiper
+    .swiper-slide.custom-swiper-slide.swiper-slide-next
+    div::before,
+  .swiper.custom-swiper
+    .swiper-slide.custom-swiper-slide.swiper-slide-prev
+    div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background: rgba(2, 15, 8, 0.75);
+    z-index: 1;
+  }
+}
