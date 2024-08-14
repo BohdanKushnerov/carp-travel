@@ -1,8 +1,8 @@
 'use client';
 
-import Section from './Section';
-import Container from './Container';
-import Slider from './Slider/Slider';
+import Section from '../Section';
+import Container from '../Container';
+import Slider from './Slider';
 import { useCallback, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import useResizeWindow from '@/hooks/useResizeWindow';
