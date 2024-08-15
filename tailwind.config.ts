@@ -66,6 +66,7 @@ const config: Config = {
       backgroundColor: {
         mobileMenu: 'rgba(1, 10, 5, 0.75);',
         input: 'rgba(255, 255, 255, 0.05)',
+        contactsBcg: 'rgba(2, 15, 8, 0.75)',
       },
     },
   },

@@ -1,5 +1,6 @@
 import About from '@/components/About';
 import Career from '@/components/Career/Career';
+import Contacts from '@/components/Contacts/Contacts';
 import Gallery from '@/components/Gallery/Gallery';
 
 import Header from '@/components/Header';
@@ -11,11 +12,12 @@ const Home = () => {
     <>
       {/* <Header /> */}
       <main className="relative">
-        <Hero />
+        {/* <Hero />
         <About />
         <Services />
         <Career />
-        <Gallery />
+        <Gallery /> */}
+        <Contacts />
       </main>
     </>
   );
