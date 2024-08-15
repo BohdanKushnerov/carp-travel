@@ -113,13 +113,13 @@ const ContactsForm = () => {
     <>
       {/*  */}
       <form
-        className="md:grid-custom-two-rows md:grid-cols-auto flex flex-col md:grid md:h-[316px] md:w-[463px] md:grid-cols-2 md:grid-rows-2 xl:h-[380px] xl:w-[606px]"
+        className="md:grid-custom-two-rows md:grid-cols-auto flex flex-col md:grid md:h-[301px] md:w-[704px] md:grid-cols-2 md:grid-rows-2 xl:h-[361px] xl:w-[607px]"
         action="/path"
         onSubmit={handleSubmit(onSubmit)}
         onChange={handleChange}
       >
         {/*  */}
-        <div className="md:mr-[20px] md:w-[222px] xl:mr-[24px] xl:w-[290px]">
+        <div className="md:order-1 md:mr-[20px] md:w-[222px] xl:mr-[24px] xl:w-[290px]">
           {formFields.map(field => (
             <label
               key={field.name}
@@ -153,15 +153,19 @@ const ContactsForm = () => {
           ))}
         </div>
 
+        {/* width: 463px;
+height: 249px; */}
         <label
           htmlFor="message"
-          className="mb-[16px] md:mb-0 md:w-[222px] xl:w-[292px]"
+          className="mb-[16px] md:order-2 md:h-[249px] md:w-[463px] xl:w-[292px]"
         >
           <span className="mb-1 block text-[12px] leading-[200%] tracking-[0.2em]">
             Message
           </span>
+          {/* width: 463px;
+height: 221px; */}
           <textarea
-            className="h-[196px] w-full resize-none bg-input px-[8px] py-[6px] outline-none focus:border"
+            className="h-[193px] md:w-[463px] md:h-[221px] w-full resize-none bg-input px-[8px] py-[6px] outline-none focus:border"
             {...register('message')}
             id="message"
             name="message"
@@ -171,8 +175,10 @@ const ContactsForm = () => {
         </label>
 
         {/*  */}
+        <div className="h-min md:order-3"></div>
+
         <button
-          className="ml-auto w-[82px] text-[30px] font-medium hover:text-gold focus:text-gold xl:w-auto xl:text-[32px]"
+          className="ml-auto h-min w-[82px] text-[30px] font-medium hover:text-gold focus:text-gold md:order-4 xl:w-auto xl:text-[32px]"
           type="submit"
         >
           SEND
