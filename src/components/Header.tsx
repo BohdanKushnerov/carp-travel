@@ -6,7 +6,7 @@ import Container from './Container';
 
 const Header: FC = () => {
   return (
-    <header className="absolute left-1/2 top-0 z-10 w-full -translate-x-1/2 transform bg-transparent px-[20px] md:px-[32px] xl:px-[80px]">
+    <header className="xl:px-auto absolute left-1/2 top-0 z-10 w-full -translate-x-1/2 transform bg-transparent px-[20px] md:px-[32px]">
       <Container className="flex items-center justify-between pt-[24px]">
         <Image
           className="h-auto w-auto"

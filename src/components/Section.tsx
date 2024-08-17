@@ -11,7 +11,7 @@ const Section: FC<ISection> = ({ className, children, ...rest }) => {
   return (
     <section
       className={twMerge(
-        'w-full border-none px-[20px] outline-none md:px-[32px] xl:px-[80px]',
+        'w-full border-none px-[20px] outline-none md:px-[32px] xl:px-auto',
         className
       )}
       {...rest}

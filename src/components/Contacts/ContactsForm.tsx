@@ -2,7 +2,6 @@
 
 import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import SvgIcon from '../SvgIcon';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -113,7 +112,7 @@ const ContactsForm = () => {
     <>
       {/*  */}
       <form
-        className="md:grid-custom-two-rows md:grid-cols-auto xl:grid-custom-three-rows flex flex-col md:grid md:h-[301px] md:w-[704px] md:grid-cols-2 md:grid-rows-2 xl:h-[361px] xl:w-[607px] xl:grid-rows-3 xl:ml-[231px]"
+        className="md:grid-custom-two-rows md:grid-cols-auto xl:grid-custom-three-rows flex flex-col md:grid md:h-[301px] md:w-[704px] md:grid-cols-2 md:grid-rows-2 xl:ml-[231px] xl:h-[361px] xl:w-[607px] xl:grid-rows-3"
         action="/path"
         onSubmit={handleSubmit(onSubmit)}
         onChange={handleChange}

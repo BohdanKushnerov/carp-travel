@@ -5,11 +5,14 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import SvgIcon from '../SvgIcon';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { InputMask } from '@react-input/mask';
+import clsx from 'clsx';
 
 const textRegExp =
   /^[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+([-']?[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+)\s[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+([-']?[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+)$/;
 
-const phoneRegExp = /^\+380\d{9}$/;
+// const phoneRegExp = /^\+380\d{9}$/;
+const phoneRegExp = /^\+38 \(\d{3}\) \d{3} \d{2} \d{2}$/;
 
 const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
@@ -62,7 +65,7 @@ const formFields: {
     name: 'phone',
     label: 'Phone',
     type: 'tel',
-    placeholder: '+ 38 (097) 12 34 567',
+    placeholder: '(097) 12 34 567',
     pattern: {
       value: phoneRegExp,
       message: 'Incorrect Phone',
@@ -135,6 +138,10 @@ const Form = () => {
     }
   }, [setValue]);
 
+  const phone = watch('phone');
+
+  console.log(phone, errors);
+
   const handleChange = () => {
     localStorage.setItem('contactFormValues', JSON.stringify(getValues()));
   };
@@ -144,6 +151,7 @@ const Form = () => {
   };
 
   const isChecked = watch('checkbox');
+  const isPhone = watch('phone');
 
   return (
     <>
@@ -172,16 +180,47 @@ const Form = () => {
                 {field.label}
               </span>
               {/*  */}
-              <input
-                className="h-[24px] w-full border-white bg-input px-[8px] text-[13px] leading-[185%] text-opacity-20 outline-none focus:border xl:text-[20px] xl:leading-[120%]"
-                {...register(field.name, {
-                  pattern: field.pattern,
-                  required: field.requiredMessage,
-                })}
-                type={field.type}
-                id={field.name}
-                placeholder={field.placeholder}
-              />
+              {field.name === 'phone' ? (
+                <div className="relative text-[13px] leading-[185%] text-opacity-20 outline-none focus:border xl:text-[20px] xl:leading-[120%]">
+                  <InputMask
+                    className={clsx(
+                      'h-[24px] w-full border-white bg-input pr-[8px]',
+                      {
+                        'pl-[8px]': isPhone,
+                        'pl-[36px] xl:pl-[50px]': !isPhone,
+                      }
+                    )}
+                    {...register(field.name, {
+                      pattern: field.pattern,
+                      required: field.requiredMessage,
+                    })}
+                    type={field.type}
+                    id={field.name}
+                    placeholder={field.placeholder}
+                    mask="+38 (___) ___ __ __"
+                    replacement={{
+                      _: /\d/,
+                    }}
+                  />
+                  {!isPhone && (
+                    <span className="absolute left-[8px] top-0 text-opacity-20">
+                      +38
+                    </span>
+                  )}
+                </div>
+              ) : (
+                <input
+                  className="h-[24px] w-full border-white bg-input px-[8px] text-[13px] leading-[185%] text-opacity-20 outline-none focus:border xl:text-[20px] xl:leading-[120%]"
+                  {...register(field.name, {
+                    pattern: field.pattern,
+                    required: field.requiredMessage,
+                  })}
+                  type={field.type}
+                  id={field.name}
+                  placeholder={field.placeholder}
+                />
+              )}
+
               {/* */}
               <div className="h-[16px] xl:h-[24px]">
                 {errors?.[field.name] && (
@@ -211,8 +250,11 @@ const Form = () => {
           />
         </label>
 
-        <label htmlFor="checkbox" className="flex flex-col">
-          <div className="flex items-center gap-[8px]">
+        <label
+          htmlFor="checkbox"
+          className="flex flex-col md:w-[222px] xl:w-[290px]"
+        >
+          <div className="flex items-start gap-[8px]">
             <input
               {...register('checkbox')}
               type="checkbox"
@@ -220,17 +262,21 @@ const Form = () => {
               className="hidden"
             />
             {isChecked ? (
-              <SvgIcon
-                height={24}
-                width={24}
-                iconPath="/sprite.svg#icon-checkbox-checked"
-              />
+              <div className="h-[24px] w-[24px]">
+                <SvgIcon
+                  height={24}
+                  width={24}
+                  iconPath="/sprite.svg#icon-checkbox-checked"
+                />
+              </div>
             ) : (
-              <SvgIcon
-                height={24}
-                width={24}
-                iconPath="/sprite.svg#icon-checkbox"
-              />
+              <div className="h-[24px] w-[24px]">
+                <SvgIcon
+                  height={24}
+                  width={24}
+                  iconPath="/sprite.svg#icon-checkbox"
+                />
+              </div>
             )}
             <span className="text-[12px] leading-[183%] xl:leading-[200%]">
               I confirm my consent to the processing of personal data.
@@ -238,7 +284,7 @@ const Form = () => {
           </div>
           <div className="h-[16px] xl:h-[24px]">
             {errors?.checkbox && (
-              <p className="text-right text-[12px] leading-[200%] tracking-[0.2em] text-incorrectField">
+              <p className="text-[12px] leading-[200%] tracking-[0.2em] text-incorrectField">
                 {errors?.checkbox?.message}
               </p>
             )}
