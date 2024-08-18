@@ -5,7 +5,7 @@ import ContactsForm from './ContactsForm';
 
 const Contacts = () => {
   return (
-    <Section className="bg-contactsBcg bg-[url('/bcg-images/contacts-ex.png')] bg-cover bg-center bg-no-repeat py-[56px] bg-blend-overlay">
+    <Section className="contacts-bcg py-[56px]">
       <Container className="xl:grid-cols-auto xl:grid-custom-two-rows md:grid-custom-three-rows md:grid md:grid-cols-1 md:grid-rows-3 xl:grid-cols-2 xl:grid-rows-2">
         <h2 className="mb-[36px] text-[40px] font-thin uppercase leading-[140%] tracking-[-0.04em] md:text-left md:text-[67px] md:leading-[100%] xl:col-span-2 xl:ml-[24px] xl:text-[98px]">
           Contact <b className="font-medium">us </b>

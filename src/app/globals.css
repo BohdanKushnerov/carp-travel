@@ -52,6 +52,36 @@ body {
   }
 }
 
+.contacts-bcg {
+  background:
+    linear-gradient(180deg, #001826 0%, rgba(0, 37, 49, 0) 20%) top,
+    linear-gradient(0deg, #001826 0%, rgba(0, 37, 49, 0) 20%) bottom,
+    linear-gradient(rgba(2, 15, 8, 0.75), rgba(2, 15, 8, 0.75)),
+    url('/bcg-images/contacts/bcg-contacts-mob.webp') no-repeat center/cover;
+}
+
+@screen md {
+  .contacts-bcg {
+    background:
+      linear-gradient(180deg, #001826 0%, rgba(0, 37, 49, 0) 20%) top,
+      linear-gradient(0deg, #001826 0%, rgba(0, 37, 49, 0) 20%) bottom,
+      linear-gradient(rgba(2, 15, 8, 0.75), rgba(2, 15, 8, 0.75)),
+      url('/bcg-images/contacts/bcg-contacts-tab.webp') no-repeat center/cover;
+  }
+}
+
+@screen xl {
+  .contacts-bcg {
+    @apply bg-cover bg-center bg-no-repeat;
+
+    background:
+      linear-gradient(180deg, #001826 0%, rgba(0, 37, 49, 0) 20%) top,
+      linear-gradient(0deg, #001826 0%, rgba(0, 37, 49, 0) 20%) bottom,
+      linear-gradient(rgba(2, 15, 8, 0.75), rgba(2, 15, 8, 0.75)),
+      url('/bcg-images/contacts/bcg-contacts-desk.webp') no-repeat center/cover;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .swiper.custom-swiper .swiper-slide.custom-swiper-slide,
   .swiper.custom-swiper .swiper-slide.custom-swiper-slide.swiper-slide-next,
