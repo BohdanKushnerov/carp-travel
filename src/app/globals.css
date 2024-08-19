@@ -4,7 +4,10 @@
 
 :root {
   --font-family: 'Inter', sans-serif;
-  --second-family: 'Karantina', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -15,14 +18,11 @@ body {
 }
 
 @layer utilities {
-  .grid-cols-auto {
+  .grid-two-cols-auto {
     grid-template-columns: minmax(min-content, max-content) minmax(
         min-content,
         auto
       );
-    /* grid-template-columns:
-      minmax(min-content, max-content) minmax(min-content, auto)
-      minmax(min-content, auto); */
   }
 
   .grid-three-cols-auto {
@@ -31,15 +31,15 @@ body {
       minmax(min-content, auto);
   }
 
-  .grid-custom-two-rows {
+  .grid-two-rows-auto {
     grid-template-rows: repeat(2, minmax(min-content, auto));
   }
 
-  .grid-custom-three-rows {
+  .grid-three-rows-auto {
     grid-template-rows: repeat(3, minmax(min-content, auto));
   }
 
-  .grid-custom-four-rows {
+  .grid-four-rows-auto {
     grid-template-rows: repeat(4, minmax(min-content, auto));
   }
 

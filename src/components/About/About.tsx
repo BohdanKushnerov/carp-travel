@@ -1,11 +1,12 @@
 import React from 'react';
-import Section from './Section';
-import Container from './Container';
+import Section from '../common/Section';
+import Container from '../common/Container';
+import { sectionNames } from '@/enums/sectionsNames';
 
 const About = () => {
   return (
-    <Section className="bg-about-mob md:bg-about-tab xl:bg-about-desk bg-cover bg-center bg-no-repeat py-[56px]">
-      <Container className="md:grid-custom-three-rows xl:grid-custom-two-rows md:grid-cols-auto md:grid md:grid-cols-2 md:grid-rows-3 xl:grid-rows-2">
+    <Section className="bg-about-mob bg-cover bg-center bg-no-repeat py-[56px] md:bg-about-tab xl:bg-about-desk" id={sectionNames.About}>
+      <Container className="md:grid-three-rows-auto xl:grid-two-rows-auto md:grid-two-cols-auto md:grid md:grid-cols-2 md:grid-rows-3 xl:grid-rows-2">
         {/*  */}
         <h2 className="order-1 mb-[8px] text-[40px] font-thin uppercase leading-[140%] tracking-[-0.04em] md:mb-0 md:w-[412px] md:text-[67px] md:leading-[100%] xl:w-[606px] xl:text-[98px]">
           WHO <b className="font-medium">WE ARE</b>

@@ -1,13 +1,17 @@
 import React, { FC } from 'react';
-import Section from './Section';
+import Section from '../common/Section';
 import JoinNowBtn from './JoinNowBtn';
-import Container from './Container';
+import Container from '../common/Container';
+import { sectionNames } from '@/enums/sectionsNames';
 
 const Hero: FC = () => {
   return (
-    <Section className="bg-hero-mob md:bg-hero-tab xl:bg-hero-desk bg-cover bg-center bg-no-repeat pb-[56px] pt-[105px] md:pt-[121px] xl:pt-[130px]">
+    <Section
+      className="bg-hero-mob bg-cover bg-center bg-no-repeat pb-[56px] pt-[105px] md:bg-hero-tab md:pt-[121px] xl:bg-hero-desk xl:pt-[130px]"
+      id={sectionNames.Hero}
+    >
       {/*  */}
-      <Container className="md:grid-custom-three-rows md:grid md:grid-cols-2 md:grid-rows-3">
+      <Container className="md:grid-three-rows-auto md:grid md:grid-cols-2 md:grid-rows-3">
         {/*  */}
         <div className="mb-[24px] ml-auto flex w-[118px] flex-col md:order-2 md:mb-[56px] md:w-[230px] xl:mb-[181px] xl:w-[305px]">
           <h2 className="text-[37px] font-thin leading-[37px] tracking-[0.04em] md:text-[67px] md:leading-[55px] md:tracking-[0.08em] xl:text-[98px] xl:leading-[98px] xl:tracking-[0em]">

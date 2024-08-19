@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import SvgIcon from '../SvgIcon';
+import SvgIcon from '../common/SvgIcon';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { EffectFade } from 'swiper/modules';
 import 'swiper/css';

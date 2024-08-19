@@ -1,12 +1,13 @@
 'use client';
 
-import Section from '../Section';
-import Container from '../Container';
+import Section from '../common/Section';
+import Container from '../common/Container';
 import Slider from './Slider';
 import { useCallback, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import useResizeWindow from '@/hooks/useResizeWindow';
 import { slides } from '@/constants/slides';
+import { sectionNames } from '@/enums/sectionsNames';
 
 const Services = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -59,8 +60,9 @@ const Services = () => {
             isMounted && screen === 'desktop' && currentSlide === 4,
         }
       )}
+      id={sectionNames.Services}
     >
-      <Container className="md:grid-cols-auto md:grid-custom-four-rows xl:grid-three-cols-auto xl:grid-custom-three-rows md:grid md:grid-cols-2 md:grid-rows-4 xl:grid-cols-3 xl:grid-rows-3">
+      <Container className="md:grid-two-cols-auto md:grid-four-rows-auto xl:grid-three-cols-auto xl:grid-three-rows-auto md:grid md:grid-cols-2 md:grid-rows-4 xl:grid-cols-3 xl:grid-rows-3">
         {/*  */}
         <h2 className="mb-[24px] text-[40px] font-thin uppercase leading-[140%] tracking-[-0.04em] md:order-1 md:mb-[36px] md:text-[67px] md:leading-[100%] xl:mb-[23px] xl:text-[98px]">
           WE <b className="font-medium">OFFER</b>

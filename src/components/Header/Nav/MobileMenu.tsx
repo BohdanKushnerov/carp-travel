@@ -3,7 +3,7 @@
 import { useCallback, useState } from 'react';
 
 import MainNav from './Nav';
-import Modal from '../Modal';
+import Modal from '../../common/Modal';
 
 const MobileMenu = () => {
   const [isShowModal, setIsShowModal] = useState(false);

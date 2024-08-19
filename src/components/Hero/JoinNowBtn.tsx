@@ -1,9 +1,15 @@
+'use client';
+
 import React from 'react';
-import SvgIcon from './SvgIcon';
+import SvgIcon from '../common/SvgIcon';
+import { scrollToSection } from '@/utils/scrollToSection';
 
 const JoinNowBtn = () => {
   return (
-    <button className="custom-transition-colors relative flex h-[53px] w-[280px] items-center justify-center bg-white/10 px-[64px] py-[18px] text-center text-[18px] font-bold leading-[267%] hover:cursor-pointer hover:bg-white/20 focus:bg-white/20 md:ml-auto md:h-[50px] md:w-[230px] md:p-[14px] xl:h-[71px] xl:w-[293px] xl:p-[16px] xl:text-[32px]">
+    <button
+      className="custom-transition-colors relative flex h-[53px] w-[280px] items-center justify-center bg-white/10 px-[64px] py-[18px] text-center text-[18px] font-bold leading-[267%] hover:cursor-pointer hover:bg-white/20 focus:bg-white/20 md:ml-auto md:h-[50px] md:w-[230px] md:p-[14px] xl:h-[71px] xl:w-[293px] xl:p-[16px] xl:text-[32px]"
+      onClick={() => scrollToSection('contacts')}
+    >
       JOIN NOW
       <SvgIcon
         className="absolute left-0 top-0 fill-white md:hidden"

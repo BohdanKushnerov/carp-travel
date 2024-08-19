@@ -1,34 +1,18 @@
 'use client';
 
-import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import SvgIcon from '../SvgIcon';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { InputMask } from '@react-input/mask';
 import clsx from 'clsx';
+import SvgIcon from '@/components/common/SvgIcon';
+import { IFormField } from '@/interfaces/IFormField';
+import { emailRegExp, phoneRegExp, textRegExp } from '@/constants/regExp';
+import { useSaveFormValues } from '@/hooks/useSaveFormValues';
 
-const textRegExp =
-  /^[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+([-']?[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+)\s[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+([-']?[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+)$/;
+type FieldNames = 'fullName' | 'email' | 'position' | 'phone' | 'message';
 
-// const phoneRegExp = /^\+380\d{9}$/;
-const phoneRegExp = /^\+38 \(\d{3}\) \d{3} \d{2} \d{2}$/;
-
-const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-
-type FieldName = 'fullName' | 'email' | 'position' | 'phone' | 'message';
-
-const formFields: {
-  name: FieldName;
-  label: string;
-  type: string;
-  placeholder: string;
-  pattern: {
-    value: RegExp;
-    message: string;
-  };
-  requiredMessage?: string;
-}[] = [
+const formFields: IFormField<FieldNames>[] = [
   {
     name: 'fullName',
     label: 'Full name',
@@ -96,7 +80,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const Form = () => {
+const CareerForm = () => {
   const {
     register,
     handleSubmit,
@@ -118,33 +102,12 @@ const Form = () => {
     },
   });
 
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      localStorage.removeItem('contactFormValues');
-      reset();
-    }
-  }, [isSubmitSuccessful, reset]);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedValues = JSON.parse(
-        localStorage.getItem('contactFormValues') || '{}'
-      );
-
-      Object.keys(storedValues).forEach(key => {
-        if (key === 'checkbox') return;
-        setValue(key as keyof FormValues, storedValues[key]);
-      });
-    }
-  }, [setValue]);
-
-  const phone = watch('phone');
-
-  console.log(phone, errors);
-
-  const handleChange = () => {
-    localStorage.setItem('contactFormValues', JSON.stringify(getValues()));
-  };
+  const handleChange = useSaveFormValues({
+    reset,
+    isSubmitSuccessful,
+    setValue,
+    getValues,
+  });
 
   const onSubmit: SubmitHandler<FormValues> = data => {
     console.log('data sended', data);
@@ -162,7 +125,7 @@ const Form = () => {
       </p>
       {/*  */}
       <form
-        className="md:grid-custom-two-rows md:grid-cols-auto flex flex-col md:grid md:h-[316px] md:w-[463px] md:grid-cols-2 md:grid-rows-2 xl:h-[380px] xl:w-[606px]"
+        className="md:grid-two-rows-auto md:grid-two-cols-auto flex flex-col md:grid md:h-[316px] md:w-[463px] md:grid-cols-2 md:grid-rows-2 xl:h-[380px] xl:w-[606px]"
         action="/path"
         onSubmit={handleSubmit(onSubmit)}
         onChange={handleChange}
@@ -303,4 +266,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default CareerForm;

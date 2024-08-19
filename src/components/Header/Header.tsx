@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import Nav from './Nav/Nav';
 import MobileMenu from './Nav/MobileMenu';
-import Container from './Container';
+import Container from '../common/Container';
 
 const Header: FC = () => {
   return (

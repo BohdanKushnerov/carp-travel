@@ -5,16 +5,17 @@ import { twMerge } from 'tailwind-merge';
 interface ISection {
   className: string;
   children: ReactNode;
+  id?: string;
 }
 
-const Section: FC<ISection> = ({ className, children, ...rest }) => {
+const Section: FC<ISection> = ({ className, children, id }) => {
   return (
     <section
       className={twMerge(
-        'w-full border-none px-[20px] outline-none md:px-[32px] xl:px-auto',
+        'xl:px-auto w-full border-none px-[20px] outline-none md:px-[32px]',
         className
       )}
-      {...rest}
+      id={id}
     >
       {children}
     </section>

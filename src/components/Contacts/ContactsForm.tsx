@@ -1,28 +1,15 @@
 'use client';
 
-import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { IFormField } from '@/interfaces/IFormField';
+import { emailRegExp, textRegExp } from '@/constants/regExp';
+import { useSaveFormValues } from '@/hooks/useSaveFormValues';
 
-const textRegExp =
-  /^[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+([-']?[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+)\s[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+([-']?[a-zA-Zа-яА-ЯґҐіІєЄщЩ']+)$/;
+type FieldNames = 'fullName' | 'email' | 'message';
 
-const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-
-type FieldName = 'fullName' | 'email' | 'message';
-
-const formFields: {
-  name: FieldName;
-  label: string;
-  type: string;
-  placeholder: string;
-  pattern: {
-    value: RegExp;
-    message: string;
-  };
-  requiredMessage?: string;
-}[] = [
+const contactsInputFormFields: IFormField<FieldNames>[] = [
   {
     name: 'fullName',
     label: 'Full name',
@@ -68,7 +55,6 @@ const ContactsForm = () => {
     setValue,
     getValues,
     reset,
-    watch,
     formState: { isSubmitSuccessful, errors },
   } = useForm<FormValues>({
     mode: 'onChange',
@@ -80,29 +66,12 @@ const ContactsForm = () => {
     },
   });
 
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      localStorage.removeItem('contactFormValues');
-      reset();
-    }
-  }, [isSubmitSuccessful, reset]);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedValues = JSON.parse(
-        localStorage.getItem('contactFormValues') || '{}'
-      );
-
-      Object.keys(storedValues).forEach(key => {
-        if (key === 'checkbox') return;
-        setValue(key as keyof FormValues, storedValues[key]);
-      });
-    }
-  }, [setValue]);
-
-  const handleChange = () => {
-    localStorage.setItem('contactFormValues', JSON.stringify(getValues()));
-  };
+  const handleChange = useSaveFormValues({
+    reset,
+    isSubmitSuccessful,
+    setValue,
+    getValues,
+  });
 
   const onSubmit: SubmitHandler<FormValues> = data => {
     console.log('data sended', data);
@@ -112,14 +81,14 @@ const ContactsForm = () => {
     <>
       {/*  */}
       <form
-        className="md:grid-custom-two-rows md:grid-cols-auto xl:grid-custom-three-rows flex flex-col md:grid md:h-[301px] md:w-[704px] md:grid-cols-2 md:grid-rows-2 xl:ml-[231px] xl:h-[361px] xl:w-[607px] xl:grid-rows-3"
+        className="md:grid-two-rows-auto md:grid-two-cols-auto xl:grid-three-rows-auto flex flex-col md:grid md:h-[301px] md:w-[704px] md:grid-cols-2 md:grid-rows-2 xl:ml-[231px] xl:h-[361px] xl:w-[607px] xl:grid-rows-3"
         action="/path"
         onSubmit={handleSubmit(onSubmit)}
         onChange={handleChange}
       >
         {/*  */}
         <div className="md:order-1 md:mr-[20px] md:w-[222px] xl:col-span-2 xl:mb-[40px] xl:mr-[0px] xl:flex xl:w-[607px] xl:flex-row xl:gap-[28px]">
-          {formFields.map(field => (
+          {contactsInputFormFields.map(field => (
             <label
               key={field.name}
               htmlFor={field.name}
