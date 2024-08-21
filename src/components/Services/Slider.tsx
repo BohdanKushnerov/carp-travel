@@ -67,7 +67,6 @@ const Slider: FC<ISliderProps> = ({
       </div>
 
       <ul className="mb-[34px] flex h-min flex-col gap-4 md:order-4 md:mb-[25px] xl:mb-0 xl:mr-[60px] xl:w-[252px] xl:gap-6">
-        {/*  */}
         {slides.map(slide => (
           <li
             key={slide.slide}

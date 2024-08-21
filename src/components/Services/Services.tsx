@@ -63,16 +63,15 @@ const Services = () => {
       id={sectionNames.Services}
     >
       <Container className="md:grid-two-cols-auto md:grid-four-rows-auto xl:grid-three-cols-auto xl:grid-three-rows-auto md:grid md:grid-cols-2 md:grid-rows-4 xl:grid-cols-3 xl:grid-rows-3">
-        {/*  */}
         <h2 className="mb-[24px] text-[40px] font-thin uppercase leading-[140%] tracking-[-0.04em] md:order-1 md:mb-[36px] md:text-[67px] md:leading-[100%] xl:mb-[23px] xl:text-[98px]">
           WE <b className="font-medium">OFFER</b>
         </h2>
-        {/*  */}
+
         <p className="mb-[16px] text-right text-[43px] font-thin md:order-2 md:mb-[40px] md:text-left md:text-[67px] md:leading-[116%] xl:col-span-2 xl:mb-[20px] xl:text-[98px]">
           <span>0{currentSlide + 1}/</span>
           <span className="text-slider">05</span>
         </p>
-        {/*  */}
+
         <Slider
           currentSlide={currentSlide}
           handleChangeCurrentSlide={handleChangeCurrentSlide}
@@ -80,7 +79,6 @@ const Services = () => {
           isMounted={isMounted}
         />
 
-        {/*  */}
         {isMounted && (
           <h3
             className={clsx(
@@ -98,7 +96,6 @@ const Services = () => {
           </h3>
         )}
 
-        {/* */}
         <p className="text-[14px] leading-[143%] md:order-6 md:mt-auto md:text-[13px] md:leading-[154%] xl:col-start-3 xl:row-start-3 xl:mt-auto xl:w-[293px] xl:text-[18px] xl:leading-[133%]">
           {slides[currentSlide].description}
         </p>

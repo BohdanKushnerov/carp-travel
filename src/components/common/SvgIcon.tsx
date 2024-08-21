@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { FC } from 'react';
 
 interface ISvgIconProps {
@@ -9,7 +10,7 @@ interface ISvgIconProps {
 
 const SvgIcon: FC<ISvgIconProps> = ({ className, width, height, iconPath }) => {
   return (
-    <svg className={className ?? ''} width={width} height={height}>
+    <svg className={clsx(className)} width={width} height={height}>
       <use href={iconPath} />
     </svg>
   );

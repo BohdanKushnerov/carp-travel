@@ -111,13 +111,13 @@ const Slider = () => {
       ))}
       <button
         type="button"
-        className="prev-button hidden uppercase outline-none transition hover:scale-105 hover:text-gold focus:scale-105 focus:text-gold md:absolute md:bottom-[17px] md:left-[38px] md:z-10 md:inline-block md:text-[33px] md:font-thin xl:bottom-[-10px] xl:left-[221px]"
+        className="prev-button custom-transition-all hidden uppercase outline-none hover:scale-105 hover:text-gold focus:scale-105 focus:text-gold md:absolute md:bottom-[17px] md:left-[38px] md:z-10 md:inline-block md:text-[33px] md:font-thin xl:bottom-[-10px] xl:left-[221px]"
       >
         back
       </button>
       <button
         type="button"
-        className="next-button hidden uppercase outline-none transition hover:scale-105 hover:text-gold focus:scale-105 focus:text-gold md:absolute md:bottom-[17px] md:right-[38px] md:z-10 md:inline-block md:text-[33px] md:font-thin xl:bottom-[-10px] xl:right-[221px]"
+        className="next-button custom-transition-all hidden uppercase outline-none hover:scale-105 hover:text-gold focus:scale-105 focus:text-gold md:absolute md:bottom-[17px] md:right-[38px] md:z-10 md:inline-block md:text-[33px] md:font-thin xl:bottom-[-10px] xl:right-[221px]"
       >
         next
       </button>

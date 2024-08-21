@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import SvgIcon from './SvgIcon';
+import { animateScroll as scroll } from 'react-scroll';
 
-const ScrollTopButton = () => {
-  console.log('ScrollTopButton');
+const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -25,9 +25,9 @@ const ScrollTopButton = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
+    scroll.scrollToTop({
+      duration: 500, 
+      smooth: true,
     });
   };
 
@@ -45,10 +45,10 @@ const ScrollTopButton = () => {
         className="fill-white"
         width={50}
         height={50}
-        iconPath="/sprite.svg#scroll-up"
+        iconPath="/sprite.svg#icon-scroll-up"
       />
     </button>
   );
 };
 
-export default ScrollTopButton;
+export default ScrollToTopButton;

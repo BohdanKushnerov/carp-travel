@@ -1,6 +1,5 @@
 import React, { FC, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
-// import clsx from 'clsx';
 
 interface ISection {
   className: string;

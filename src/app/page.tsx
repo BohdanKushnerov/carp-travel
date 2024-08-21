@@ -1,6 +1,6 @@
 import About from '@/components/About/About';
 import Career from '@/components/Career/Career';
-import ScrollTopButton from '@/components/common/ScrollTopButton';
+import ScrollToTopButton from '@/components/common/ScrollToTopButton';
 import Contacts from '@/components/Contacts/Contacts';
 import Gallery from '@/components/Gallery/Gallery';
 
@@ -19,7 +19,7 @@ const Home = () => {
         <Career />
         <Gallery />
         <Contacts />
-        <ScrollTopButton />
+        <ScrollToTopButton />
       </main>
     </>
   );

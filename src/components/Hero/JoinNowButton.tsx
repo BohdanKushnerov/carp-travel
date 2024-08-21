@@ -4,7 +4,7 @@ import React from 'react';
 import SvgIcon from '../common/SvgIcon';
 import { scrollToSection } from '@/utils/scrollToSection';
 
-const JoinNowBtn = () => {
+const JoinNowButton = () => {
   return (
     <button
       className="custom-transition-colors relative flex h-[53px] w-[280px] items-center justify-center bg-white/10 px-[64px] py-[18px] text-center text-[18px] font-bold leading-[267%] hover:cursor-pointer hover:bg-white/20 focus:bg-white/20 md:ml-auto md:h-[50px] md:w-[230px] md:p-[14px] xl:h-[71px] xl:w-[293px] xl:p-[16px] xl:text-[32px]"
@@ -23,7 +23,6 @@ const JoinNowBtn = () => {
         height={53}
         iconPath="/sprite.svg#icon-mobile-right-btn"
       />
-      {/*  */}
       <SvgIcon
         className="absolute left-0 top-0 hidden fill-white md:block xl:hidden"
         width={35}
@@ -36,7 +35,6 @@ const JoinNowBtn = () => {
         height={50}
         iconPath="/sprite.svg#icon-tablet-right-btn"
       />
-      {/*  */}
       <SvgIcon
         className="absolute left-0 top-0 hidden fill-white xl:block"
         width={44}
@@ -53,4 +51,4 @@ const JoinNowBtn = () => {
   );
 };
 
-export default JoinNowBtn;
+export default JoinNowButton;

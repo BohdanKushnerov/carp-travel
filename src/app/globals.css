@@ -6,10 +6,6 @@
   --font-family: 'Inter', sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: var(--font-family);
   font-weight: 200;
@@ -45,6 +41,10 @@ body {
 
   .custom-transition-colors {
     @apply transition-colors duration-300 ease-in-out;
+  }
+
+  .custom-transition-all {
+    @apply transition-all duration-300 ease-in-out;
   }
 
   .custom-text-shadow {

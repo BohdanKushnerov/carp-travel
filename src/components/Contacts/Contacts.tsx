@@ -12,36 +12,33 @@ const Contacts = () => {
           Contact <b className="font-medium">us </b>
         </h2>
 
-        {/*  */}
         <div className="md:grid-two-cols-auto md:grid-two-rows-auto xl:grid-three-rows-auto mb-[12px] md:mb-[64px] md:grid md:grid-cols-2 md:grid-rows-2 xl:ml-[107px] xl:w-[311px] xl:grid-cols-1 xl:grid-rows-3">
           <div className="mb-[24px] flex flex-row justify-end gap-[20px] md:order-1 md:ml-[48px] xl:ml-0">
             <div className="flex flex-col">
-              {/*  */}
               <a
-                className="text-[14px] font-normal leading-[171%] md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
+                className="hover:custom-text-shadow focus:custom-text-shadow custom-transition-all text-[14px] font-normal leading-[171%] hover:text-gold focus:focus:text-gold md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
                 href="tel:+380981234567"
                 rel="noopener noreferrer nofollow"
               >
                 +38 (098) 12 34 567
               </a>
               <a
-                className="text-[14px] font-normal leading-[171%] md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
+                className="hover:custom-text-shadow focus:custom-text-shadow custom-transition-all text-[14px] font-normal leading-[171%] hover:text-gold focus:focus:text-gold md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
                 href="tel:+380731234567"
                 rel="noopener noreferrer nofollow"
               >
                 +38 (073) 12 34 567
               </a>
             </div>
-            {/* */}
+
             <p className="text-[12px] leading-[167%] xl:leading-[200%]">
               Phone number
             </p>
           </div>
 
-          {/*  */}
           <div className="mb-[24px] ml-[16px] flex flex-row items-center gap-[20px] md:order-3 xl:order-2 xl:ml-0">
             <a
-              className="text-[14px] font-normal leading-[171%] md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
+              className="hover:custom-text-shadow focus:custom-text-shadow custom-transition-all text-[14px] font-normal leading-[171%] hover:text-gold focus:focus:text-gold md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
               href="mailto:support@carptravel.com"
               rel="noopener noreferrer nofollow"
             >
@@ -52,7 +49,6 @@ const Contacts = () => {
             </p>
           </div>
 
-          {/*  */}
           <div className="mr-[15px] flex flex-row justify-end gap-[20px] md:order-2 md:row-span-2 md:ml-[90px] md:justify-normal xl:order-3 xl:ml-0 xl:mr-[30px] xl:flex-row-reverse">
             <p className="text-[12px] leading-[167%] xl:leading-[200%]">
               Follow us
@@ -60,7 +56,7 @@ const Contacts = () => {
             <ul>
               <li className="xl:flex xl:justify-end">
                 <a
-                  className="text-[14px] font-normal leading-[171%] md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
+                  className="hover:custom-text-shadow focus:custom-text-shadow custom-transition-all text-[14px] font-normal leading-[171%] hover:text-gold focus:focus:text-gold md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
                   href="#"
                   rel="noopener noreferrer nofollow"
                 >
@@ -69,7 +65,7 @@ const Contacts = () => {
               </li>
               <li className="xl:flex xl:justify-end">
                 <a
-                  className="text-[14px] font-normal leading-[171%] md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
+                  className="hover:custom-text-shadow focus:custom-text-shadow custom-transition-all text-[14px] font-normal leading-[171%] hover:text-gold focus:focus:text-gold md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
                   href="#"
                   rel="noopener noreferrer nofollow"
                 >
@@ -78,7 +74,7 @@ const Contacts = () => {
               </li>
               <li className="xl:flex xl:justify-end">
                 <a
-                  className="text-[14px] font-normal leading-[171%] md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
+                  className="hover:custom-text-shadow focus:custom-text-shadow custom-transition-all text-[14px] font-normal leading-[171%] hover:text-gold focus:focus:text-gold md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
                   href="#"
                   rel="noopener noreferrer nofollow"
                 >
@@ -87,7 +83,7 @@ const Contacts = () => {
               </li>
               <li className="xl:flex xl:justify-end">
                 <a
-                  className="text-[14px] font-normal leading-[171%] md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
+                  className="hover:custom-text-shadow focus:custom-text-shadow custom-transition-all text-[14px] font-normal leading-[171%] hover:text-gold focus:focus:text-gold md:text-[16px] md:leading-[150%] xl:text-[18px] xl:leading-[133%]"
                   href="#"
                   rel="noopener noreferrer nofollow"
                 >

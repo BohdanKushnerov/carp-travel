@@ -48,34 +48,28 @@ const Career = () => {
           <h2 className="mb-[24px] text-[40px] font-thin uppercase leading-[140%] tracking-[-0.04em] md:order-1 md:col-span-2 md:mb-[12px] md:h-min md:w-[368px] md:text-[67px] md:leading-[100%] xl:col-span-1 xl:mb-[24px] xl:w-[540px] xl:text-[98px]">
             Choose <b className="font-medium">US</b>
           </h2>
-          {/*  */}
           <p className="mb-[36px] ml-auto w-[179px] text-[14px] leading-[143%] md:order-2 md:mb-0 md:w-[221px] md:text-[13px] md:leading-[154%] xl:w-[293px] xl:text-[18px] xl:leading-[133%]">
             Your chance to join our passionate team in Carpathian tourism.
             Seeking talented professionals to share our common mission.
           </p>
-          {/*  */}
           <h3 className="mb-[36px] ml-auto w-[179px] text-[30px] uppercase md:order-3 md:col-span-3 md:mb-[56px] md:ml-[80px] md:w-[143px] xl:col-span-1 xl:mb-[45px] xl:ml-[124px] xl:w-[171px] xl:text-[36px] xl:leading-[108%]">
             Why us ?
           </h3>
-          {/* */}
           <ul className="flex w-[181px] flex-col gap-[16px] md:order-4 md:mr-[20px] md:w-[225px] md:gap-[24px] xl:order-5 xl:ml-[40px] xl:mr-[24px] xl:w-[562px]">
             {benefits.map((benefit, index) => (
               <li
                 key={index}
                 className="flex flex-col gap-[12px] text-right xl:ml-auto xl:flex-row xl:gap-[24px]"
               >
-                {/*  */}
                 <h3 className="text-[14px] font-normal leading-[143%] md:text-[16px] md:leading-[125%] xl:text-[18px] xl:leading-[133%]">
                   {benefit.title}
                 </h3>
-                {/*  */}
                 <p className="text-[12px] leading-[167%] xl:w-[285px] xl:text-left xl:leading-[200%]">
                   {benefit.description}
                 </p>
               </li>
             ))}
           </ul>
-          {/*  */}
           {isClient && screen !== 'mobile' && (
             <div className="hidden md:order-5 md:col-span-2 md:block xl:order-4 xl:col-span-1 xl:row-span-2">
               <CareerForm />
